@@ -234,6 +234,30 @@ class Message:
             raise Exception("Message does not fit on the screen")
 
 
+class Card:
+    def __init__(self, number):
+        """
+        Creates a card with the number specified.
+        Cards are 5x5.
+        """
+        self.number = number
+        self.__string = " ____\n|   {}|\n|    |\n|    |\n|____|".format(
+            str(self.number))
+
+    def __str__(self):
+        return self.__string
+
+    def display(self, screen, row, col):
+        """
+        Prints the card, with its top left corner at the specified
+        row and col. Will overwrite whatever is underneath it.
+        """
+        rows = self.__string.split('\n')
+        for i in range(len(rows)):
+            for j in range(len(rows[i])):
+                screen.set_point(row + i, col + j, rows[i][j])
+
+
 def get_number_of_columns():
     """
     Returns the current number of columns being displayed by the terminal.
@@ -254,8 +278,10 @@ if __name__ == "__main__":
     # Doing floor division by 4 gives a good ratio of height to width
     number_of_rows = number_of_cols // 4
     screen = Screen(number_of_rows, number_of_cols)
+    card = Card(3)
     display_string = "Hello\nWorld!"
     my_message = Message(display_string, screen, border='*')
     my_message.display_centre()
+    card.display(screen, 0, 0)
     screen.display()
     input('...')
