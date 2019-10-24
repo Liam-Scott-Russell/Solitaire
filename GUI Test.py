@@ -183,18 +183,7 @@ class Message:
         self.max_length = max([len(i) for i in self.lines])
         self.screen = screen
         self.previous_screen = self.screen.get_matrix()
-
-        # create the border
-        # the top and bottom border
-        tb_border = border * self.max_length
-        # makes the first and last lines the border
-        self.lines = [tb_border] + self.lines + [tb_border]
-        for i in range(len(self.lines)):
-            # adds the side border
-            self.lines[i] = border + self.lines[i] + border
-
-        # account for adding the border, even if the border is blank
-        self.max_length += 2 * len(border)
+        self.border_char = border
 
     def display_centre(self):
         """
@@ -213,7 +202,7 @@ class Message:
             start_col = (max_cols - self.max_length) // 2
             start_row = (max_rows - len(self.lines)) // 2
 
-            # testing
+            # draws the message
             for i in range(len(self.lines)):
                 for j in range(self.max_length):
                     try:
@@ -224,6 +213,22 @@ class Message:
                         # there isn't a character there, so we print a ' '
                         self.screen.set_point(
                             start_row + i, start_col + j, ' ')
+
+            # define the corners of the border
+            top_row = start_row - 1
+            bottom_row = start_row + len(self.lines) + 1
+            left_col = start_col - 1
+            right_col = start_col + self.max_length
+
+            # draw the border lines
+            self.screen.draw_vertical_line(
+                left_col, self.border_char, lower=top_row, upper=bottom_row)
+            self.screen.draw_vertical_line(
+                right_col, self.border_char, lower=top_row, upper=bottom_row)
+            self.screen.draw_horizontal_line(
+                top_row, self.border_char, lower=left_col, upper=right_col)
+            self.screen.draw_horizontal_line(
+                bottom_row-1, self.border_char, lower=left_col, upper=right_col)
 
         else:
             raise Exception("Message does not fit on the screen")
@@ -244,59 +249,13 @@ def get_number_of_columns():
 
 
 if __name__ == "__main__":
-    sleep(5)
+    sleep(2)
     number_of_cols = get_number_of_columns() - 1
     # Doing floor division by 4 gives a good ratio of height to width
     number_of_rows = number_of_cols // 4
     screen = Screen(number_of_rows, number_of_cols)
-    # screen.draw_vertical_line(0, '#')
-    # screen.draw_vertical_line(number_of_cols - 1, '#')
-    # screen.draw_horizontal_line(0, '#')
-    # screen.draw_horizontal_line(number_of_rows - 1, '#')
-    # screen.display()
-    delay = 0.005
-    while True:
-        my_message = Message(
-            "Hello and welcome to:\n      Solitaire!", screen, border='-')
-        my_message.display_centre()
-        screen.draw_vertical_line(0, '-')
-        screen.draw_vertical_line(number_of_cols - 1, '-')
-        screen.draw_horizontal_line(0, '-')
-        screen.draw_horizontal_line(number_of_rows - 1, '-')
-        screen.clear()
-        screen.display()
-        sleep(delay)
-
-        my_message = Message(
-            "Hello and welcome to:\n      Solitaire!", screen, border='\\')
-        screen.clear()
-        my_message.display_centre()
-        screen.display()
-        screen.draw_vertical_line(0, '\\')
-        screen.draw_vertical_line(number_of_cols - 1, '\\')
-        screen.draw_horizontal_line(0, '\\')
-        screen.draw_horizontal_line(number_of_rows - 1, '\\')
-        sleep(delay)
-
-        my_message = Message(
-            "Hello and welcome to:\n      Solitaire!", screen, border='|')
-        screen.clear()
-        my_message.display_centre()
-        screen.draw_vertical_line(0, '|')
-        screen.draw_vertical_line(number_of_cols - 1, '|')
-        screen.draw_horizontal_line(0, '|')
-        screen.draw_horizontal_line(number_of_rows - 1, '|')
-        screen.display()
-        sleep(delay)
-
-        my_message = Message(
-            "Hello and welcome to:\n      Solitaire!", screen, border='/')
-        screen.clear()
-        my_message.display_centre()
-        screen.draw_vertical_line(0, '/')
-        screen.draw_vertical_line(number_of_cols - 1, '/')
-        screen.draw_horizontal_line(0, '/')
-        screen.draw_horizontal_line(number_of_rows - 1, '/')
-        screen.display()
-        sleep(delay)
+    display_string = "Hello\nWorld!"
+    my_message = Message(display_string, screen, border='*')
+    my_message.display_centre()
+    screen.display()
     input('...')
