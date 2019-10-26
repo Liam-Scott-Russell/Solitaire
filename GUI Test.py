@@ -6,34 +6,7 @@ ID: 980268500
 from os import system, name, get_terminal_size
 from sys import modules
 from time import sleep
-import sys
 import copy
-
-
-def clear():
-    pass
-
-    # for windows
-    if 'idlelib.run' in modules:
-        print("Please run this program outside of Python IDLE.\n To do this, double click the A2cool.py file.")
-    # print('Running IDLE' if 'idlelib.run' in sys.modules else 'Out of IDLE')
-
-    print("Current screen size is {} by {}".format(
-        get_terminal_size().columns, get_terminal_size().columns))
-    print("Setting screen size to 200 by 100")
-    sleep(2)
-    system("mode con cols=200 lines=100")
-
-    print("New screen size is {} by {}".format(
-        get_terminal_size().columns, get_terminal_size().columns))
-    sleep(5)
-
-    if name == 'nt':
-        _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
 
 
 class Screen:
@@ -251,6 +224,7 @@ class Message:
         self.screen.set_matrix(self.previous_screen)
         return True  # the wipe was successful
 
+
 class Card:
     def __init__(self, number, screen):
         """
@@ -353,41 +327,18 @@ class Card:
             col_change -= 1
 
 
-def get_number_of_columns():
+def get_current_screen_size():
     """
-    Returns the current number of columns being displayed by the terminal.
+    Returns the current number of columns being displayed by the terminal,
+    and calculates a good ratio for the number of rows to display.
     """
     try:
         # This works on windows, sometimes on Linux/mac
-        columns = get_terminal_size().columns
+        # The -1 is to prevent the columns from going over the screen limit
+        cols = get_terminal_size().columns - 1
+        rows = get_terminal_size().lines
     except Exception as e:
         print(e)
         return None
     else:
-        return columns
-
-
-if __name__ == "__main__":
-    sleep(2)
-    number_of_cols = get_number_of_columns() - 1
-    # Doing floor division by 4 gives a good ratio of height to width
-    number_of_rows = number_of_cols // 4
-    screen = Screen(number_of_rows, number_of_cols)
-    card = Card(3, screen)
-    for i in range(10):
-        temp = Card(i, screen)
-        temp.display(i, (i*6))
-    card.display(5, 5)
-    screen.display()
-    sleep(2)
-    screen.clear()
-    screen.display()
-    sleep(2)
-    card.move(0, 0)
-    card.move(10, 50)
-    string = "row: {}\ncol: {}".format(card.current_row, card.current_col)
-    my_message = Message(string, screen)
-    my_message.display_centre()
-    screen.clear()
-    screen.display()
-    input('...')
+        return (rows, cols)
