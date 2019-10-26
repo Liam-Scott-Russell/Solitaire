@@ -371,6 +371,7 @@ class Card:
 class Column:
     def __init__(self, name, screen, start_col, end_col, start_row, end_row, cards):
         self.screen = screen
+        self.name = name
         self.start_col = start_col
         self.end_col = end_col
         self.start_row = start_row
@@ -380,20 +381,30 @@ class Column:
         if self.start_col > self.end_col or self.start_row > self.end_row:
             raise Exception("The row or column is invalid.")
 
-    def display(self):
+    def display(self, draw_left_col=False, draw_right_col=True):
         # draw the vertical lines at the edges of the column
-        # self.screen.draw_vertical_line(self.start_col, '#', upper=self.end_row, lower=self.start_row)
-        self.screen.draw_vertical_line(
-            self.end_col, ':', upper=self.end_row, lower=self.start_row)
+        if draw_left_col:
+            self.screen.draw_vertical_line(
+                self.start_col, ':', upper=self.end_row, lower=self.start_row)
+        if draw_right_col:
+            self.screen.draw_vertical_line(
+                self.end_col, ':', upper=self.end_row, lower=self.start_row)
+
+        # draws the name of the column at the top
+        if len(self.name) + 2 <= (self.end_col - self.start_col):
+            msg = Message(self.name, self.screen, border=' ')
+            msg.display_custom(self.current_starting_position[0], self.current_starting_position[1])
+            self.current_starting_position[0] += 1
 
         for card in self.cards:
             if self.current_starting_position[0] + 5 > self.end_row:
                 # The card wont fit on the screen
                 continue
             else:
-                card.display(
-                    self.current_starting_position[0], self.current_starting_position[1])
-                self.current_starting_position[0] += 2
+                card.display(self.current_starting_position[0], self.current_starting_position[1])
+
+                # standard offset is +2, but it must be more if the name is multiple lines
+                self.current_starting_position[0] += (2 + self.name.count('\n'))
 
 
 def get_current_screen_size():
@@ -410,5 +421,4 @@ def get_current_screen_size():
         return None
     else:
         return (rows, cols)
-
 
