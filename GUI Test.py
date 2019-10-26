@@ -188,7 +188,7 @@ class Message:
         self.lines = message.split("\n")
         self.max_length = max([len(i) for i in self.lines])
         self.screen = screen
-        self.previous_screen = self.screen.get_matrix()
+        self.previous_screen = None
         self.border_char = border
 
     def display_centre(self):
@@ -196,6 +196,7 @@ class Message:
         Displays the message contents in the centre of the screen.
         This method is best for printing warnings and alerts.
         """
+        self.previous_screen = self.screen.get_matrix()
         max_rows = self.screen.get_dimensions()[0]
         max_cols = self.screen.get_dimensions()[1]
 
@@ -239,6 +240,16 @@ class Message:
         else:
             raise Exception("Message does not fit on the screen")
 
+    def wipe(self):
+        """
+        Restores the previous screen (if there is one) prior to
+        displaying the message on the screen.
+        WARNING: Any screen changes between display_centre() and wipe aren't saved
+        """
+        if self.previous_screen is None:
+            return False  # The wipe failed
+        self.screen.set_matrix(self.previous_screen)
+        return True  # the wipe was successful
 
 class Card:
     def __init__(self, number, screen):
