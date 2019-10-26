@@ -249,6 +249,7 @@ class Card:
         self.screen = screen
         self.__string = " ____\n|   {}|\n|    |\n|    |\n|____|".format(
             str(self.number))
+        self.previous_screen = None
 
     def __str__(self):
         return self.__string
@@ -258,10 +259,23 @@ class Card:
         Prints the card, with its top left corner at the specified
         row and col. Will overwrite whatever is underneath it.
         """
+        # Saves the previous screen, so we can restore it later
+        self.previous_screen = self.screen.get_matrix()
+
         rows = self.__string.split('\n')
         for i in range(len(rows)):
             for j in range(len(rows[i])):
                 self.screen.set_point(row + i, col + j, rows[i][j])
+
+    def wipe(self):
+        """
+        Restores the previous screen (if there is one) prior to
+        displaying the card on the screen.
+        """
+        if self.previous_screen is None:
+            return False  # The wipe failed
+        self.screen.set_matrix(self.previous_screen)
+        return True  # the wipe was successful
 
 
 def get_number_of_columns():
