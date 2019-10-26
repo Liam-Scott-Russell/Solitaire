@@ -227,6 +227,47 @@ class Message:
         self.screen.set_matrix(self.previous_screen)
         return True  # the wipe was successful
 
+    def display_custom(self, start_row, start_col):
+        """
+        Prints the message at a custom row and column.
+        """
+        self.previous_screen = self.screen.get_matrix()
+        max_rows = self.screen.get_dimensions()[0]
+        max_cols = self.screen.get_dimensions()[1]
+
+        cols_fit = (start_col + self.max_length) <= max_cols and start_col > 0
+        rows_fit = (start_col + len(self.lines)) <= max_rows and start_row > 0
+
+        if rows_fit and cols_fit:
+            for i in range(len(self.lines)):
+                for j in range(self.max_length):
+                    try:
+                        # trys to plot the message's character at a point
+                        self.screen.set_point(
+                            start_row + i, start_col + j, self.lines[i][j])
+                    except:
+                        # there isn't a character there, so we print a ' '
+                        self.screen.set_point(
+                            start_row + i, start_col + j, ' ')
+
+            # define the corners of the border
+            top_row = start_row - 1
+            bottom_row = start_row + len(self.lines) + 1
+            left_col = start_col - 1
+            right_col = start_col + self.max_length
+
+            # draw the border lines
+            self.screen.draw_vertical_line(
+                left_col, self.border_char, lower=top_row, upper=bottom_row)
+            self.screen.draw_vertical_line(
+                right_col, self.border_char, lower=top_row, upper=bottom_row)
+            self.screen.draw_horizontal_line(
+                top_row, self.border_char, lower=left_col, upper=right_col)
+            self.screen.draw_horizontal_line(
+                bottom_row-1, self.border_char, lower=left_col, upper=right_col)
+        else:
+            return False
+
 
 class Card:
     def __init__(self, number, screen):
@@ -369,3 +410,5 @@ def get_current_screen_size():
         return None
     else:
         return (rows, cols)
+
+
