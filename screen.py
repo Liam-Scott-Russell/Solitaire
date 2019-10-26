@@ -34,10 +34,13 @@ class Screen:
         else:  # if we are running on mac or linux
             _ = system('clear')
 
-    def display(self):
+    def display(self, clear=True):
         """
         Prints the screen matrix.
+        If clear is set to True, then the screen is cleared beforehand.
         """
+        if clear:
+            self.clear()
         for row in self.__matrix:
             print("".join(row))
 
@@ -301,7 +304,6 @@ class Card:
             new_row = self.current_row + (1 * row_change_sign)
             new_col = self.current_col + (1 * col_change_sign)
             self.display(new_row, new_col)
-            self.screen.clear()
             self.screen.display()
             row_change -= 1
             col_change -= 1
@@ -312,7 +314,6 @@ class Card:
             self.wipe()  # clear the card off the screen
             new_row = self.current_row + (1 * row_change_sign)
             self.display(new_row, self.current_col)
-            self.screen.clear()
             self.screen.display()
             row_change -= 1
 
@@ -322,7 +323,6 @@ class Card:
             self.wipe()  # clear the card off the screen
             new_col = self.current_col + (1 * col_change_sign)
             self.display(self.current_row, new_col)
-            self.screen.clear()
             self.screen.display()
             col_change -= 1
 

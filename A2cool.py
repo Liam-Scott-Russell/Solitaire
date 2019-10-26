@@ -22,7 +22,6 @@ def main():
         disp_string += "\nPlease adjust the screen size to continue"
         message = Message(disp_string, s)
         message.display_centre()  # displays the message to the user
-        s.clear()
         s.display()
         sleep(2)
         rows, cols = get_current_screen_size()
