@@ -1,3 +1,8 @@
+"""
+Name: Liam Scott-Russell
+UPI: hsco139
+ID: 980268500
+"""
 from os import system, name, get_terminal_size
 from sys import modules
 from time import sleep
@@ -235,19 +240,20 @@ class Message:
 
 
 class Card:
-    def __init__(self, number):
+    def __init__(self, number, screen):
         """
         Creates a card with the number specified.
         Cards are 5x5.
         """
         self.number = number
+        self.screen = screen
         self.__string = " ____\n|   {}|\n|    |\n|    |\n|____|".format(
             str(self.number))
 
     def __str__(self):
         return self.__string
 
-    def display(self, screen, row, col):
+    def display(self, row, col):
         """
         Prints the card, with its top left corner at the specified
         row and col. Will overwrite whatever is underneath it.
@@ -255,7 +261,7 @@ class Card:
         rows = self.__string.split('\n')
         for i in range(len(rows)):
             for j in range(len(rows[i])):
-                screen.set_point(row + i, col + j, rows[i][j])
+                self.screen.set_point(row + i, col + j, rows[i][j])
 
 
 def get_number_of_columns():
@@ -278,10 +284,10 @@ if __name__ == "__main__":
     # Doing floor division by 4 gives a good ratio of height to width
     number_of_rows = number_of_cols // 4
     screen = Screen(number_of_rows, number_of_cols)
-    card = Card(3)
+    card = Card(3, screen)
     display_string = "Hello\nWorld!"
     my_message = Message(display_string, screen, border='*')
     my_message.display_centre()
-    card.display(screen, 0, 0)
+    card.display(0, 0)
     screen.display()
     input('...')
