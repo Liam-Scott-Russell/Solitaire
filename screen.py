@@ -329,7 +329,7 @@ class Card:
 
 def get_current_screen_size():
     """
-    Returns the current number of rows and columns in the terminal.
+    Returns the current number of rows and columns being displayed.
     """
     try:
         # This works on windows, sometimes on Linux/mac
