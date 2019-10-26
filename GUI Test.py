@@ -7,6 +7,7 @@ from os import system, name, get_terminal_size
 from sys import modules
 from time import sleep
 import sys
+import copy
 
 
 def clear():
@@ -81,7 +82,7 @@ class Screen:
         """
         # We return a copy of the list, not a reference because
         #   if we update the matrix, we want this copy to stay the same.
-        return self.__matrix.copy()
+        return copy.deepcopy(self.__matrix)
 
     def set_matrix(self, new_matrix):
         """
@@ -250,6 +251,8 @@ class Card:
         self.__string = " ____\n|   {}|\n|    |\n|    |\n|____|".format(
             str(self.number))
         self.previous_screen = None
+        self.current_row = None
+        self.current_col = None
 
     def __str__(self):
         return self.__string
@@ -267,15 +270,76 @@ class Card:
             for j in range(len(rows[i])):
                 self.screen.set_point(row + i, col + j, rows[i][j])
 
+        # update the cards's current location
+        self.current_row = row
+        self.current_col = col
+
     def wipe(self):
         """
         Restores the previous screen (if there is one) prior to
         displaying the card on the screen.
+        WARNING: Any screen changes between display() and wipe aren't saved
         """
         if self.previous_screen is None:
             return False  # The wipe failed
         self.screen.set_matrix(self.previous_screen)
         return True  # the wipe was successful
+
+    def move(self, row, col):
+        """
+        Moves the card to the specified row and column.
+        Displays the card moving along the screen to its destination.
+        Card must have been displayed using display() first.
+        """
+        # sets the delay for how long to sleep between printing cards
+        delay = 0.1
+
+        # the difference between the initial and final destination
+        row_change = row - self.current_row
+        col_change = col - self.current_col
+
+        # hold the sign of the change, i.e. is it negative or positive
+        row_change_sign = 1
+        col_change_sign = 1
+
+        # sets the signs, and then makes them positive
+        if row_change < 0:
+            row_change_sign = -1
+            row_change *= -1
+        if col_change < 0:
+            col_change_sign = -1
+            col_change *= -1
+
+        while row_change > 0 and col_change > 0:
+            sleep(delay)
+            self.wipe()  # clear the card off the screen
+            new_row = self.current_row + (1 * row_change_sign)
+            new_col = self.current_col + (1 * col_change_sign)
+            self.display(new_row, new_col)
+            self.screen.clear()
+            self.screen.display()
+            row_change -= 1
+            col_change -= 1
+
+        # handles remaining vertical movement
+        while row_change > 0:
+            sleep(delay)
+            self.wipe()  # clear the card off the screen
+            new_row = self.current_row + (1 * row_change_sign)
+            self.display(new_row, self.current_col)
+            self.screen.clear()
+            self.screen.display()
+            row_change -= 1
+
+        # handles remaining horizontal movement
+        while col_change > 0:
+            sleep(delay)
+            self.wipe()  # clear the card off the screen
+            new_col = self.current_col + (1 * col_change_sign)
+            self.display(self.current_row, new_col)
+            self.screen.clear()
+            self.screen.display()
+            col_change -= 1
 
 
 def get_number_of_columns():
@@ -299,9 +363,20 @@ if __name__ == "__main__":
     number_of_rows = number_of_cols // 4
     screen = Screen(number_of_rows, number_of_cols)
     card = Card(3, screen)
-    display_string = "Hello\nWorld!"
-    my_message = Message(display_string, screen, border='*')
+    for i in range(10):
+        temp = Card(i, screen)
+        temp.display(i, (i*6))
+    card.display(5, 5)
+    screen.display()
+    sleep(2)
+    screen.clear()
+    screen.display()
+    sleep(2)
+    card.move(0, 0)
+    card.move(10, 50)
+    string = "row: {}\ncol: {}".format(card.current_row, card.current_col)
+    my_message = Message(string, screen)
     my_message.display_centre()
-    card.display(0, 0)
+    screen.clear()
     screen.display()
     input('...')
