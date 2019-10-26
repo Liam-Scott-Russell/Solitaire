@@ -327,15 +327,43 @@ class Card:
             col_change -= 1
 
 
+class Column:
+    def __init__(self, name, screen, start_col, end_col, start_row, end_row, cards):
+        self.screen = screen
+        self.start_col = start_col
+        self.end_col = end_col
+        self.start_row = start_row
+        self.end_row = end_row
+        self.cards = cards
+        self.current_starting_position = [start_row, start_col+1]
+        if self.start_col > self.end_col or self.start_row > self.end_row:
+            raise Exception("The row or column is invalid.")
+
+    def display(self):
+        # draw the vertical lines at the edges of the column
+        # self.screen.draw_vertical_line(self.start_col, '#', upper=self.end_row, lower=self.start_row)
+        self.screen.draw_vertical_line(
+            self.end_col, ':', upper=self.end_row, lower=self.start_row)
+
+        for card in self.cards:
+            if self.current_starting_position[0] + 5 > self.end_row:
+                # The card wont fit on the screen
+                continue
+            else:
+                card.display(
+                    self.current_starting_position[0], self.current_starting_position[1])
+                self.current_starting_position[0] += 2
+
+
 def get_current_screen_size():
     """
     Returns the current number of rows and columns being displayed.
     """
     try:
         # This works on windows, sometimes on Linux/mac
-        # The -1 is to prevent the columns from going over the screen limit
+        # The -1 is to prevent the columns/rows from going over the screen limit
         cols = get_terminal_size().columns - 1
-        rows = get_terminal_size().lines
+        rows = get_terminal_size().lines - 1
     except Exception as e:
         print(e)
         return None
