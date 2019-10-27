@@ -1,4 +1,4 @@
-from screen import Screen, Message, Card, get_current_screen_size
+from screen import Screen, Message, Card, Column, get_current_screen_size
 from time import sleep
 
 
@@ -67,17 +67,47 @@ class Deque:
         else:
             return self.items[0]
 
-    def printall(self, index):
+    def return_all(self, index):
         # prints the data stored within the deque
         if self.size() == 0:
-            print(' ')
+            return []
         elif index == 0:
-            # prints the first item, followed by '*' characters
-            print(str(self.items[0]), ' *' * (len(self.items) - 1), sep="")
+            # returns the first item, followed by '*' characters
+            return [str(self.items[0])] + ['*'] * (len(self.items) - 1)
         else:
             # necessary to use the list comprehension,
             # as string objects are expected
-            print(" ".join([str(x) for x in self.items]))
+            output = [str(x) for x in self.items]
+            if output is not None:
+                return output
+            return []
+
+
+class Solitaire:
+    def __init__(self, ncards, screen):
+        # implemented as specified in the handout/coderunner
+        self.card_deques = []
+        self.__CardNo = len(ncards)
+        self.__ColNo = (self.__CardNo // 8) + 3
+        self.__ChanceNo = self.__CardNo * 2
+        for i in range(self.__ColNo):
+            self.card_deques.append(Deque())
+        for i in range(self.__CardNo):
+            self.card_deques[0].add_front(ncards[i])
+        self.screen = screen
+        self.columns = []
+
+    def display(self):
+        # sets the heigh of all columns based on the largest number of cards
+        height = 2 * max([len(j.items) for j in self.card_deques]) + 6
+        for i in range(len(self.card_deques)):
+            # Gets the deck of cards, and we reverse it as we want the top card at the back
+            deck = [Card(j, self.screen) for j in self.card_deques[i].return_all(i)]
+            self.columns.append(Column(f"Col #{i}", self.screen, 1+(10*i), 9+(10*i), 1, height, deck[::-1]))
+
+        for col in self.columns:
+            col.display()
+        self.screen.display()
 
 
 def main():
@@ -101,10 +131,8 @@ def main():
         message = Message(disp_string, s)
         message.display_centre()  # displays the message to the user
         s.display()
-        sleep(2) # Wait a little bit
+        sleep(2)  # Wait a little bit
         rows, cols = get_current_screen_size()
-    else:
-        s.clear()
 
 
 if __name__ == "__main__":
