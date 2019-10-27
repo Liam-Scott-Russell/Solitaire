@@ -277,7 +277,7 @@ class Card:
         """
         self.number = number
         self.screen = screen
-        self.__string = " ____\n|   {}|\n|    |\n|    |\n|____|".format(
+        self.__string = " ____\n|  {:>2}|\n|    |\n|    |\n|____|".format(
             str(self.number))
         self.previous_screen = None
         self.current_row = None
@@ -421,4 +421,3 @@ def get_current_screen_size():
         return None
     else:
         return (rows, cols)
-
