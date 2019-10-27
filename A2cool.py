@@ -98,8 +98,9 @@ class Solitaire:
         self.columns = []
 
     def display(self):
+        self.columns = []
         # sets the heigh of all columns based on the largest number of cards
-        height = 2 * max([len(j.items) for j in self.card_deques]) + 6
+        height = self.screen.get_dimensions()[0] - 1
         for i in range(len(self.card_deques)):
             # Gets the deck of cards, and we reverse it as we want the top card at the back
             deck = [Card(j, self.screen) for j in self.card_deques[i].return_all(i)]
@@ -108,6 +109,52 @@ class Solitaire:
         for col in self.columns:
             col.display()
         self.screen.display()
+
+    def move(self, c1, c2):
+        if c1 == 0 and c2 == 0:  # condition 1
+            card = self.card_deques[0].remove_rear()
+            self.card_deques[0].add_front(card)
+            return True # successfully moved
+
+        elif c1 == 0 and c2 > 0:  # condition 2
+            # first if statement checks that there are items within the deques
+            if self.card_deques[0].size() != 0 and self.card_deques[c2].size() != 0:
+                if self.card_deques[0].peeklast() == (self.card_deques[c2].peek() - 1):
+                    # the move is valid, so move the card
+                    self.card_deques[c2].add_front(self.card_deques[0].remove_rear())
+            elif self.card_deques[0].size() != 0:
+                # the target column is empty, so we can move there
+                # select the card to move
+                card_to_move = self.columns[c1].cards[-1]
+                popped_card = self.card_deques[0].remove_rear()
+
+                # clear the removed card off the scree
+                card_to_move.wipe()
+                self.screen.display()
+                self.display()
+
+                # calculate the destination address
+                destination_row, destination_col = self.columns[c2].current_starting_position
+                # move the card along the screen, and then remove it
+                card_to_move.display(card_to_move.current_row, card_to_move.current_col)
+                card_to_move.move(destination_row, destination_col)
+                card_to_move.wipe()
+                self.card_deques[c2].add_front(popped_card)
+                self.display()
+
+
+
+        elif c1 > 0 and c2 > 0:
+            # first if statement checks that there are items within the deques
+            if self.card_deques[c1].size() != 0 and self.card_deques[c2].size() != 0:
+                if self.card_deques[c1].peeklast() == (self.card_deques[c2].peek() - 1):
+                    # the move is valid, so move the cards
+                    for i in range(self.card_deques[c1].size()):
+                        self.card_deques[c2].add_front(self.card_deques[c1].remove_rear())
+            elif self.card_deques[0].size() != 0:
+                # the target column is empty, so we can move there
+                for i in range(self.card_deques[c1].size()):
+                    self.card_deques[c2].add_front(self.card_deques[c1].remove_rear())
 
 
 def main():
@@ -134,6 +181,19 @@ def main():
         sleep(2)  # Wait a little bit
         rows, cols = get_current_screen_size()
 
+    screen = Screen(rows, cols)
+    screen.clear()
+    welcome_message = Message("Welcome to Solitaire!\nPress ENTER to start.", screen)
+    welcome_message.display_centre()
+    screen.display()
+    input('...')
+    welcome_message.wipe()
+    game = Solitaire([i for i in range(20)], screen)
+    # game.card_deques[1].add_front('10')
+    game.display()
+    sleep(2)
+    game.move(0, 1)
+    game.display()
 
 if __name__ == "__main__":
     main()
