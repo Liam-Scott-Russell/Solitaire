@@ -210,6 +210,23 @@ class Solitaire:
         error.wipe()
         self.screen.display()
 
+    def IsComplete(self):
+        if self.card_deques[0].size() != 0:
+            # fails condition 1 (cards are still in the first pile)
+            return False
+
+        # this list holds the size of the piles of cards
+        sizes = [self.card_deques[i].size() for i in range(len(self.card_deques))]
+
+        # this is true if the cards aren't all in the same pile,
+        # as only one pile should have a non-zero length (condition 2)
+        if sizes.count(0) != (len(self.card_deques) - 1):
+            return False
+
+        # we don't need to check condition 3, as it should always
+        # be true, unless there was an illegal move somewhere
+        return True
+
 def main():
     try:
         rows, cols = get_current_screen_size()
