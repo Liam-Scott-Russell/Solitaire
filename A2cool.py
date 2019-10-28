@@ -227,6 +227,56 @@ class Solitaire:
         # be true, unless there was an illegal move somewhere
         return True
 
+    def play(self):
+
+        game_iter = 0
+        for i in range(self.__ChanceNo):
+
+            self.display()
+
+            status = Message(f"Round { game_iter } out of { self.__ChanceNo }", self.screen)
+            status.display_centre()
+            self.screen.display()
+            col1 = input('Source Column?\t')
+            col2 = input('Destination Column?\t')
+            status.wipe()
+            # Try and convert the moves to integers
+            try:
+                col1 = int(col1)
+                col2 = int(col2)
+            except:
+                self.invalid_move_warning()
+                continue
+
+            if col1 >= 0 and col2 >= 0 and col1 < self.__ColNo and col2 < self.__ColNo:
+                
+                if self.move(col1, col2):
+                    game_iter += 1
+            
+            else:
+                self.invalid_move_warning()
+
+            if self.IsComplete():
+                
+                
+                win = Message(f"You Win in {game_iter+1} steps!", self.screen)
+                win.display_centre()
+                self.screen.display()
+
+                input("Press ENTER to exit ...")
+                break
+
+            else:
+
+                if game_iter+1 == self.__ChanceNo:
+                    
+                    lose = Message("You LOSE!", self.screen)
+                    lose.display_centre()
+                    self.screen.display()
+                    input("Press ENTER to exit ...")
+                    break
+
+
 def main():
     try:
         rows, cols = get_current_screen_size()
@@ -259,17 +309,10 @@ def main():
     screen.display()
     input('...')
     welcome_message.wipe()
-    game=Solitaire([i for i in range(20, -1, -1)], screen)
-    # game.card_deques[1].add_front('10')
+    game=Solitaire([i for i in range(2, -1, -1)], screen)
     game.display()
-    sleep(2)
-    game.move(0, 1)
-    game.display()
-    game.move(1, 2)
-    game.move(0, 1)
-    game.move(1, 2)
+    game.play()
 
 
 if __name__ == "__main__":
     main()
-    input("...")
