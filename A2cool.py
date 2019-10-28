@@ -177,6 +177,30 @@ class Solitaire:
                 self.invalid_move_warning()
                 return False
 
+        elif c1 > 0 and c2 > 0:
+            # first if statement checks that there are items within the deques
+            if self.card_deques[c1].size() != 0 and self.card_deques[c2].size() != 0:
+                if self.card_deques[c1].peeklast() == (self.card_deques[c2].peek() - 1):
+                    # the move is valid, so move the cards
+                    for i in range(self.card_deques[c1].size()):
+                        self.card_deques[c2].add_front(self.card_deques[c1].remove_rear())
+                        self.display()
+                    return True
+
+            elif self.card_deques[0].size() != 0:
+                # the target column is empty, so we can move there
+                for i in range(self.card_deques[c1].size()):
+                    self.card_deques[c2].add_front(self.card_deques[c1].remove_rear())
+                    self.display()
+                return True
+
+            else:
+                self.invalid_move_warning()
+                return False
+        else:
+            self.invalid_move_warning()
+            return False
+
     def invalid_move_warning(self):
         error = Message(
             "Your move is invalid!\nPress ENTER to try again.", self.screen, border="#")
@@ -223,8 +247,10 @@ def main():
     game.display()
     sleep(2)
     game.move(0, 1)
-    game.move(0, 2)
+    game.display()
+    game.move(1, 2)
     game.move(0, 1)
+    game.move(1, 2)
 
 
 if __name__ == "__main__":
