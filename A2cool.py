@@ -146,6 +146,10 @@ class Solitaire:
 
                     return True
 
+                else:
+                    self.invalid_move_warning()
+                    return False
+
             # the target column is empty, so we can move there
             elif self.card_deques[0].size() != 0:
 
@@ -169,7 +173,18 @@ class Solitaire:
                 self.display()
 
                 return True
+            else:
+                self.invalid_move_warning()
+                return False
 
+    def invalid_move_warning(self):
+        error = Message(
+            "Your move is invalid!\nPress ENTER to try again.", self.screen, border="#")
+        error.display_centre()
+        self.screen.display()
+        input("...")
+        error.wipe()
+        self.screen.display()
 
 def main():
     try:
@@ -203,12 +218,12 @@ def main():
     screen.display()
     input('...')
     welcome_message.wipe()
-    game = Solitaire([i for i in range(20, -1, -1)], screen)
+    game=Solitaire([i for i in range(20, -1, -1)], screen)
     # game.card_deques[1].add_front('10')
     game.display()
     sleep(2)
     game.move(0, 1)
-    game.move(0, 1)
+    game.move(0, 2)
     game.move(0, 1)
 
 
