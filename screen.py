@@ -382,6 +382,7 @@ class Column:
             raise Exception("The row or column is invalid.")
 
     def display(self, draw_left_col=False, draw_right_col=True):
+        self.wipe()
         # draw the vertical lines at the edges of the column
         if draw_left_col:
             self.screen.draw_vertical_line(
@@ -393,7 +394,8 @@ class Column:
         # draws the name of the column at the top
         if len(self.name) + 2 <= (self.end_col - self.start_col):
             msg = Message(self.name, self.screen, border=' ')
-            msg.display_custom(self.current_starting_position[0], self.current_starting_position[1])
+            msg.display_custom(
+                self.current_starting_position[0], self.current_starting_position[1])
             self.current_starting_position[0] += 1
 
         for card in self.cards:
@@ -401,10 +403,18 @@ class Column:
                 # The card wont fit on the screen
                 continue
             else:
-                card.display(self.current_starting_position[0], self.current_starting_position[1])
+                card.display(
+                    self.current_starting_position[0], self.current_starting_position[1])
 
                 # standard offset is +2, but it must be more if the name is multiple lines
-                self.current_starting_position[0] += (2 + self.name.count('\n'))
+                self.current_starting_position[0] += (
+                    2 + self.name.count('\n'))
+
+    def wipe(self):
+        for i in range(self.end_row - self.start_row):
+            for j in range(self.end_col - self.start_col):
+                self.screen.set_point(self.start_row + i,
+                                      self.start_col + j, " ")
 
 
 def get_current_screen_size():
