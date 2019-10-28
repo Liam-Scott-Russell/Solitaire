@@ -1,5 +1,6 @@
 from screen import Screen, Message, Card, Column, get_current_screen_size
 from time import sleep
+from random import shuffle
 
 
 class Deque:
@@ -99,7 +100,7 @@ class Solitaire:
 
     def display(self):
         self.columns = []
-        # sets the heigh of all columns based on the largest number of cards
+        # sets the heigh of all columns based on the  screen height
         height = self.screen.get_dimensions()[0] - 1
         for i in range(len(self.card_deques)):
             # Gets the deck of cards, and we reverse it as we want the top card at the back
@@ -180,17 +181,22 @@ class Solitaire:
         elif c1 > 0 and c2 > 0:
             # first if statement checks that there are items within the deques
             if self.card_deques[c1].size() != 0 and self.card_deques[c2].size() != 0:
-                if self.card_deques[c1].peeklast() == (self.card_deques[c2].peek() - 1):
+                if self.card_deques[c1].peek() == (self.card_deques[c2].peeklast() - 1):
                     # the move is valid, so move the cards
                     for i in range(self.card_deques[c1].size()):
-                        self.card_deques[c2].add_front(self.card_deques[c1].remove_rear())
+                        self.card_deques[c2].add_rear(
+                            self.card_deques[c1].remove_front())
                         self.display()
-                    return True
+                    return
+                else:
+                    self.invalid_move_warning()
+                    return False
 
             elif self.card_deques[0].size() != 0:
                 # the target column is empty, so we can move there
                 for i in range(self.card_deques[c1].size()):
-                    self.card_deques[c2].add_front(self.card_deques[c1].remove_rear())
+                    self.card_deques[c2].add_front(
+                        self.card_deques[c1].remove_rear())
                     self.display()
                 return True
 
@@ -216,7 +222,8 @@ class Solitaire:
             return False
 
         # this list holds the size of the piles of cards
-        sizes = [self.card_deques[i].size() for i in range(len(self.card_deques))]
+        sizes = [self.card_deques[i].size()
+                 for i in range(len(self.card_deques))]
 
         # this is true if the cards aren't all in the same pile,
         # as only one pile should have a non-zero length (condition 2)
@@ -230,11 +237,12 @@ class Solitaire:
     def play(self):
 
         game_iter = 0
-        for i in range(self.__ChanceNo):
+        while True:
 
             self.display()
 
-            status = Message(f"Round { game_iter } out of { self.__ChanceNo }", self.screen)
+            status = Message(
+                f"Round { game_iter } out of { self.__ChanceNo }", self.screen)
             status.display_centre()
             self.screen.display()
             col1 = input('Source Column?\t')
@@ -249,16 +257,15 @@ class Solitaire:
                 continue
 
             if col1 >= 0 and col2 >= 0 and col1 < self.__ColNo and col2 < self.__ColNo:
-                
+
                 if self.move(col1, col2):
                     game_iter += 1
-            
+
             else:
                 self.invalid_move_warning()
 
             if self.IsComplete():
-                
-                
+
                 win = Message(f"You Win in {game_iter+1} steps!", self.screen)
                 win.display_centre()
                 self.screen.display()
@@ -269,7 +276,7 @@ class Solitaire:
             else:
 
                 if game_iter+1 == self.__ChanceNo:
-                    
+
                     lose = Message("You LOSE!", self.screen)
                     lose.display_centre()
                     self.screen.display()
@@ -309,7 +316,13 @@ def main():
     screen.display()
     input('...')
     welcome_message.wipe()
-    game=Solitaire([i for i in range(2, -1, -1)], screen)
+
+    # Create the deck of cards and shuffle it
+    card_deck = [i for i in range(24)]
+    shuffle(card_deck)
+
+    # setup and play the game
+    game = Solitaire(card_deck, screen)
     game.display()
     game.play()
 
