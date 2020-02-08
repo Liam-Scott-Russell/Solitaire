@@ -71,3 +71,24 @@ class TestScreen(unittest.TestCase):
         expected_matrix = [["1", "2"], ["3", "4"]]
 
         self.assertListEqual(expected_matrix, actual_matrix)
+
+    def test_point_is_valid_with_valid_coordinates(self):
+        """
+        Test that the screen can validate correct points
+        """
+        test_screen = Screen(2, 2)
+
+        for row in range(2):
+            for col in range(2):
+                self.assertTrue(test_screen.point_is_valid(row, col))
+    def test_point_is_valid_with_valid_coordinates(self):
+        """
+        Test that the screen can invalidate incorrect points
+        """
+        test_screen = Screen(2, 2)
+
+        self.assertFalse(test_screen.point_is_valid(2, 1))
+        self.assertFalse(test_screen.point_is_valid(2, 2))
+        self.assertFalse(test_screen.point_is_valid(1, 2))
+        self.assertFalse(test_screen.point_is_valid(-1, 0))
+        self.assertFalse(test_screen.point_is_valid(0, -1))
