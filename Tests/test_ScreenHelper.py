@@ -1,0 +1,30 @@
+from unittest import TestCase
+from ScreenHelper import ScreenHelper
+from new_screen import Screen
+
+
+class TestScreenHelper(TestCase):
+    def test_draw_line_horizontally_with_valid_coordinates(self):
+        """
+        A test that a horizontal line can be drawn
+        """
+        screen = Screen(3, 3)
+
+        ScreenHelper.draw_line(screen, 0, 0, 0, 1, "#")
+
+        expected_screen = Screen(3, 3)
+        expected_screen.set_point(0, 0, "#")
+        expected_screen.set_point(0, 1, "#")
+
+        self.assertListEqual(screen.get_matrix(), expected_screen.get_matrix())
+
+    def test_draw_line_horizontally_with_invalid_coordinates(self):
+        """
+        A test that a horizontal line won't be drawn for invalid coordinates
+        """
+        screen = Screen(2, 2)
+
+        with self.assertRaises(IndexError):
+            ScreenHelper.draw_line(screen, 0, 0, 0, 3, "#")
+
+        self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())

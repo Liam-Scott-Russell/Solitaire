@@ -69,7 +69,3 @@ class TestScreen(unittest.TestCase):
         expected_matrix = [["1", "2"], ["3", "4"]]
 
         self.assertListEqual(expected_matrix, actual_matrix)
-
-
-if __name__ == "__main__":
-    unittest.main()
