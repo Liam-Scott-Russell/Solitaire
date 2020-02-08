@@ -8,6 +8,7 @@ class TestScreen(unittest.TestCase):
         Test that a certain point on the screen can be accessed
         """
         test_screen = Screen(2, 2)
+
         actual_point = test_screen.get_point(1, 1)
         expected_point = " "
 
@@ -18,6 +19,7 @@ class TestScreen(unittest.TestCase):
         Test that the correct error is returned when trying to access invalid points
         """
         test_screen = Screen(2, 2)
+
         with self.assertRaises(IndexError):
             test_screen.get_point(-1, 23)
 
@@ -38,8 +40,21 @@ class TestScreen(unittest.TestCase):
         Test that an invalid coordinate won't change the state of the screen
         """
         test_screen = Screen(2, 2)
+
         with self.assertRaises(IndexError):
             test_screen.set_point(1, 2, "#")
+
+    def test_get_dimensions(self):
+        """
+        Test that the screen returns the correct dimensions
+        """
+        test_screen = Screen(1, 2)
+
+        actual_dimensions = test_screen.get_dimensions()
+        expected_dimensions = (1, 2)
+
+        self.assertTupleEqual(expected_dimensions, actual_dimensions)
+
 
 if __name__ == "__main__":
     unittest.main()

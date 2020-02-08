@@ -22,3 +22,5 @@ class Screen:
         else:
             raise IndexError("Coordinates invalid")
 
+    def get_dimensions(self):
+        return self.__rows, self.__cols
