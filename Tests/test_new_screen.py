@@ -44,6 +44,8 @@ class TestScreen(unittest.TestCase):
         with self.assertRaises(IndexError):
             test_screen.set_point(1, 2, "#")
 
+        self.assertEqual(test_screen.get_matrix(), Screen(2, 2).get_matrix())
+
     def test_get_dimensions(self):
         """
         Test that the screen returns the correct dimensions
