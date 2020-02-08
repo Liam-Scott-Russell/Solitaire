@@ -55,6 +55,21 @@ class TestScreen(unittest.TestCase):
 
         self.assertTupleEqual(expected_dimensions, actual_dimensions)
 
+    def test_get_matrix(self):
+        """
+        Test that the screen returns the correct matrix
+        """
+        test_screen = Screen(2, 2)
+        test_screen.set_point(0, 0, "1")
+        test_screen.set_point(0, 1, "2")
+        test_screen.set_point(1, 0, "3")
+        test_screen.set_point(1, 1, "4")
+
+        actual_matrix = test_screen.get_matrix()
+        expected_matrix = [["1", "2"], ["3", "4"]]
+
+        self.assertListEqual(expected_matrix, actual_matrix)
+
 
 if __name__ == "__main__":
     unittest.main()

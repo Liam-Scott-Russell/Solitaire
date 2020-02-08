@@ -24,3 +24,6 @@ class Screen:
 
     def get_dimensions(self):
         return self.__rows, self.__cols
+
+    def get_matrix(self):
+        return self.__matrix
