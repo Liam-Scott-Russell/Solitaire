@@ -1,5 +1,5 @@
 class Screen:
-    def __init__(self, rows, cols):
+    def __init__(self, cols, rows):
         self.__rows = rows
         self.__cols = cols
         self.__matrix = [[" " for j in range(self.__cols)] for i in range(self.__rows)]
@@ -23,7 +23,7 @@ class Screen:
             raise IndexError("Coordinates invalid")
 
     def get_dimensions(self):
-        return self.__rows, self.__cols
+        return self.__cols, self.__rows
 
     def get_matrix(self):
         return self.__matrix
