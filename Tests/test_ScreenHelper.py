@@ -1,6 +1,6 @@
 from unittest import TestCase
 from ScreenHelper import ScreenHelper
-from new_screen import Screen
+from Screen import Screen
 
 
 class TestScreenHelper(TestCase):

@@ -1,5 +1,5 @@
 import unittest
-from new_screen import Screen
+from Screen import Screen
 
 
 class TestScreen(unittest.TestCase):
