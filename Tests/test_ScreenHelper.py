@@ -90,7 +90,21 @@ class TestScreenHelper(TestCase):
                            list("|   2|"),
                            list("|    |"),
                            list("|    |"),
-                           list("|____|"),]
+                           list("|____|")]
+
+        self.assertListEqual(expected_matrix, screen.get_matrix())
+
+    def test_draw_card_with_valid_coordinates_and_no_number(self):
+        screen = Screen(6, 5)
+        card = Card(2)
+
+        ScreenHelper.draw_card(screen, 0, 0, card, show_number=False)
+
+        expected_matrix = [list(" ____ "),
+                           list("|   *|"),
+                           list("|    |"),
+                           list("|    |"),
+                           list("|____|")]
 
         self.assertListEqual(expected_matrix, screen.get_matrix())
 

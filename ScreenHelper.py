@@ -13,11 +13,11 @@ class ScreenHelper:
             raise IndexError("Coordinates not valid")
 
     @staticmethod
-    def draw_card(screen, x, y, card):
+    def draw_card(screen, x, y, card, show_number=True):
 
         if not ScreenHelper.card_will_fit_on_screen(screen, x, y, card):
             raise IndexError("Coordinates not valid")
-        representation = card.get_representation()
+        representation = card.get_representation(show_number)
         representation_as_rows = representation.split("\n")
 
         for y_offset in range(len(representation_as_rows)):
@@ -35,7 +35,6 @@ class ScreenHelper:
         screen_max_x_value = screen.get_dimensions()[0]
         screen_max_y_value = screen.get_dimensions()[1]
 
-        # TODO: change these to properties of the card
         card_max_x_value = x + card.dimensions[0]
         card_max_y_value = y + card.dimensions[1]
 
