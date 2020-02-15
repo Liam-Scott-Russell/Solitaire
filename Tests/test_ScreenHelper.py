@@ -1,6 +1,7 @@
 from unittest import TestCase
 from ScreenHelper import ScreenHelper
 from Screen import Screen
+from Card import Card
 
 
 class TestScreenHelper(TestCase):
@@ -78,3 +79,18 @@ class TestScreenHelper(TestCase):
             ScreenHelper.draw_line(screen, 0, 0, 0, 3, "#")
 
         self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())
+
+    def test_draw_card_with_valid_coordinates(self):
+        screen = Screen(6, 6)
+        card = Card(2)
+
+        ScreenHelper.draw_card(screen, 0, 0, card)
+
+        expected_matrix = [list(" ____ "),
+                           list("|   2|"),
+                           list("|    |"),
+                           list("|    |"),
+                           list("|____|"),
+                           list("      ")]
+
+        self.assertListEqual(expected_matrix, screen.get_matrix())
