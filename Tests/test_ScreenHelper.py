@@ -81,7 +81,7 @@ class TestScreenHelper(TestCase):
         self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())
 
     def test_draw_card_with_valid_coordinates(self):
-        screen = Screen(6, 6)
+        screen = Screen(6, 5)
         card = Card(2)
 
         ScreenHelper.draw_card(screen, 0, 0, card)
@@ -90,7 +90,36 @@ class TestScreenHelper(TestCase):
                            list("|   2|"),
                            list("|    |"),
                            list("|    |"),
-                           list("|____|"),
-                           list("      ")]
+                           list("|____|"),]
 
         self.assertListEqual(expected_matrix, screen.get_matrix())
+
+    def test_draw_card_with_invalid_coordinates(self):
+        """
+        A test that trying to draw a card on an invalid screen won't change the state of the screen
+        """
+        screen = Screen(4, 4)
+        card = Card(3)
+
+        with self.assertRaises(IndexError):
+            ScreenHelper.draw_card(screen, 0, 0, card)
+
+        self.assertListEqual(Screen(4, 4).get_matrix(), screen.get_matrix())
+
+    def test_card_will_fit_on_screen_with_valid_coordinates(self):
+        screen = Screen(6, 5)
+        card = Card(3)
+
+        self.assertTrue(ScreenHelper.card_will_fit_on_screen(screen, 0, 0, card))
+
+    def test_card_will_fit_on_screen_with_invalid_x_coordinates(self):
+        screen = Screen(5, 5)
+        card = Card(3)
+
+        self.assertFalse(ScreenHelper.card_will_fit_on_screen(screen, 1, 0, card))
+
+    def test_card_will_fit_on_screen_with_invalid_y_coordinates(self):
+        screen = Screen(5, 5)
+        card = Card(3)
+
+        self.assertFalse(ScreenHelper.card_will_fit_on_screen(screen, 0, 1, card))

@@ -1,6 +1,7 @@
 class Card:
     def __init__(self, number):
         self.number = number
+        self.dimensions = (6, 5)
 
     def get_representation(self, show_number=True):
         """
