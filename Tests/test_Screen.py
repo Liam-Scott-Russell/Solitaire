@@ -63,8 +63,8 @@ class TestScreen(unittest.TestCase):
         """
         test_screen = Screen(2, 2)
         test_screen.set_point(0, 0, "1")
-        test_screen.set_point(0, 1, "2")
-        test_screen.set_point(1, 0, "3")
+        test_screen.set_point(1, 0, "2")
+        test_screen.set_point(0, 1, "3")
         test_screen.set_point(1, 1, "4")
 
         actual_matrix = test_screen.get_matrix()

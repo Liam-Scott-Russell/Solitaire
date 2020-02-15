@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f42a072-41ab-4015-a1f4-65e036d915c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Card.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/test_Card.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Run_all_tests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Run_all_tests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScreenHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/ScreenHelper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/test_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_Screen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_ScreenHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_ScreenHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/test_new_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_Screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +44,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Tests" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RunManager" selected="Python tests.Run all tests">
@@ -68,32 +66,6 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <module name="Solitaire" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <module name="Solitaire" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -173,18 +145,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="Solitaire" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -278,35 +238,55 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581723413300" />
-    <state x="585" y="113" key="CommitChangelistDialog2" timestamp="1581321129683">
+    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1581725799461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="113" key="CommitChangelistDialog2/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581321129683" />
+    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581725799461" />
+    <state x="585" y="113" key="CommitChangelistDialog2" timestamp="1581726274690">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="113" key="CommitChangelistDialog2/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581726274690" />
     <state x="585" y="113" key="CommitChangelistDialog2/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213253401" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1581722202044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581722202044" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1581723655918">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1581726244102">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581723655918" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581726244102" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1581723655917">
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1581726244102">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581723655917" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581726244102" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1581723655917">
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1581726244102">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581723655917" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581726244102" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1581723655918">
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1581726244102">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581723655918" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581726244102" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581725888391">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581725888391" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1581725888391">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581725888391" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1581725888391">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581725888391" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1581725888391">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581725888391" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1581722001486">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -324,9 +304,20 @@
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581321702693" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ScreenHelper.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Solitaire$test_Card.coverage" NAME="test_Card Coverage Results" MODIFIED="1581721473017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
-    <SUITE FILE_PATH="coverage/Solitaire$Run_all_tests.coverage" NAME="Run all tests Coverage Results" MODIFIED="1581723624683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
+    <SUITE FILE_PATH="coverage/Solitaire$Run_all_tests.coverage" NAME="Run all tests Coverage Results" MODIFIED="1581726235246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$test_MathHelper.coverage" NAME="test_MathHelper Coverage Results" MODIFIED="1581321915813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
   </component>
 </project>

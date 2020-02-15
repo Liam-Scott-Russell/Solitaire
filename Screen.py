@@ -18,7 +18,7 @@ class Screen:
     def set_point(self, x, y, value):
 
         if self.point_is_valid(x, y):
-            self.__matrix[x][y] = value
+            self.__matrix[y][x] = value
         else:
             raise IndexError("Coordinates invalid")
 
