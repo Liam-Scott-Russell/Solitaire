@@ -18,14 +18,14 @@ class TestMoveChecker(TestCase):
         self.assertFalse(MoveChecker.check_move(0, 0, game))
 
     def test_check_move_with_condition_2_and_valid_items_in_destination(self):
-        game = GameState(2)
+        game = GameState(4)
         game.columns[0].items = [Card(1), Card(2)]
         game.columns[1].items = [Card(4), Card(3)]
 
         self.assertTrue(MoveChecker.check_move(0, 1, game))
 
     def test_check_move_with_condition_2_and_invalid_items_in_destination(self):
-        game = GameState(2)
+        game = GameState(4)
         game.columns[0].items = [Card(1), Card(2)]
         game.columns[1].items = [Card(5), Card(4)]
 
@@ -41,3 +41,37 @@ class TestMoveChecker(TestCase):
         game = GameState(2)
 
         self.assertFalse(MoveChecker.check_move(0, 1, game))
+
+    def test_check_move_with_condition_3_and_valid_items_in_destination(self):
+        game = GameState(14) # large so that we generate the correct number of columns
+        game.columns[1].items = [Card(1), Card(2)]
+        game.columns[2].items = [Card(4), Card(3)]
+        game.columns[3].items = [Card(1), Card(2)]
+
+        self.assertTrue(MoveChecker.check_move(1, 2, game))
+        self.assertTrue(MoveChecker.check_move(3, 2, game))
+
+    def test_check_move_with_condition_3_and_invalid_items_in_destination(self):
+        game = GameState(4)
+        game.columns[1].items = [Card(1), Card(2)]
+        game.columns[2].items = [Card(3), Card(3)]
+
+        self.assertFalse(MoveChecker.check_move(2, 1, game))
+
+    def test_check_move_with_condition_3_and_no_items_in_destination(self):
+        game = GameState(2)
+        game.columns[1].items = [Card(1), Card(2)]
+
+        self.assertTrue(MoveChecker.check_move(1, 2, game))
+
+    def test_check_move_with_condition_3_and_no_items_in_destination_and_no_items_in_source(self):
+        game = GameState(2)
+
+        self.assertFalse(MoveChecker.check_move(2, 1, game))
+
+    def test_check_move_with_empty_column_0(self):
+        # TODO: Consider whether this should be implemented
+        game = GameState(2)
+        game.columns[1].items = [1]
+
+        self.assertFalse(MoveChecker.check_move(1, 0, game))

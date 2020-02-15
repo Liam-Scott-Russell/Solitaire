@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f42a072-41ab-4015-a1f4-65e036d915c4" name="Default Changelist" comment="Add ability to draw cards on the screen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoveChecker.py" beforeDir="false" afterPath="$PROJECT_DIR$/MoveChecker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_MoveChecker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_MoveChecker.py" afterDir="false" />
     </list>
@@ -314,25 +313,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581736882773" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1581748431746">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1581749812408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581748431746" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581749812408" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1581748431746">
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1581749812408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581748431746" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581749812408" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1581748431746">
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1581749812408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581748431746" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581749812408" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1581748431746">
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1581749812408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581748431746" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581749812408" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581748431746">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -387,7 +386,7 @@
     <SUITE FILE_PATH="coverage/Solitaire$Unittests_for_test_Screen_TestScreen_test_point_is_valid_with_valid_coordinates.coverage" NAME="Unittests for test_Screen.TestScreen.test_point_is_valid_with_valid_coordinates Coverage Results" MODIFIED="1581731816638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$Unittests_for_test_ScreenHelper_TestScreenHelper_test_card_will_fit_on_screen_with_valid_coordinates.coverage" NAME="Unittests for test_ScreenHelper.TestScreenHelper.test_card_will_fit_on_screen_with_valid_coordinates Coverage Results" MODIFIED="1581731482601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$test_Card.coverage" NAME="test_Card Coverage Results" MODIFIED="1581721473017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
-    <SUITE FILE_PATH="coverage/Solitaire$Run_all_tests.coverage" NAME="Run all tests Coverage Results" MODIFIED="1581748431729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
+    <SUITE FILE_PATH="coverage/Solitaire$Run_all_tests.coverage" NAME="Run all tests Coverage Results" MODIFIED="1581749812396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$test_MathHelper.coverage" NAME="test_MathHelper Coverage Results" MODIFIED="1581321915813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
   </component>
 </project>
