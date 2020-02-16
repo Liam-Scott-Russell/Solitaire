@@ -1,5 +1,5 @@
 from unittest import TestCase
-from MoveChecker import *
+from MoveHelper import *
 from Deque import Deque
 from GameState import GameState
 from Card import Card
