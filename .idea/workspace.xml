@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f42a072-41ab-4015-a1f4-65e036d915c4" name="Default Changelist" comment="Add ability to draw cards on the screen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoveHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/MoveHelper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_MoveHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_MoveHelper.py" afterDir="false" />
     </list>
@@ -13,7 +12,7 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myAutoScrollToSource" value="true" />
-    <option name="myElementSize" value="511" />
+    <option name="myElementSize" value="512" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -331,25 +330,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581813733707" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1581815140820">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1581815725450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815140820" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815725450" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1581815140819">
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1581815725450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815140819" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815725450" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1581815140819">
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1581815725450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815140819" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815725450" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1581815140820">
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1581815725450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815140820" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581815725450" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/3000.0.1536.832/0.0.1920.1040/1920.-840.1080.1880@0.0.1920.1040" timestamp="1581213207176" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581814652442">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -416,7 +415,7 @@
     <SUITE FILE_PATH="coverage/Solitaire$Unittests_for_test_WinChecker_TestWinChecker_test_check_if_won_without_cards_in_first_column.coverage" NAME="Unittests for test_WinChecker.TestWinChecker.test_check_if_won_without_cards_in_first_column Coverage Results" MODIFIED="1581814655757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$Unittests_for_test_ScreenHelper_TestScreenHelper_test_card_will_fit_on_screen_with_valid_coordinates.coverage" NAME="Unittests for test_ScreenHelper.TestScreenHelper.test_card_will_fit_on_screen_with_valid_coordinates Coverage Results" MODIFIED="1581731482601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$test_Card.coverage" NAME="test_Card Coverage Results" MODIFIED="1581721473017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
-    <SUITE FILE_PATH="coverage/Solitaire$Run_all_tests.coverage" NAME="Run all tests Coverage Results" MODIFIED="1581815140798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
+    <SUITE FILE_PATH="coverage/Solitaire$Run_all_tests.coverage" NAME="Run all tests Coverage Results" MODIFIED="1581815725435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Solitaire$test_MathHelper.coverage" NAME="test_MathHelper Coverage Results" MODIFIED="1581321915813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
   </component>
 </project>
