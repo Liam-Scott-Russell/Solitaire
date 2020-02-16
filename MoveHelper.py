@@ -1,4 +1,4 @@
-class MoveChecker:
+class MoveHelper:
     @staticmethod
     def check_move(column1, column2, gamestate):
 
@@ -7,11 +7,11 @@ class MoveChecker:
         should_check_condition_3 = column1 > 0 and column2 > 0
 
         if should_check_condition_1:
-            return MoveChecker.check_condition_1(gamestate)
+            return MoveHelper.check_condition_1(gamestate)
         elif should_check_condition_2:
-            return MoveChecker.check_condition_2_and_3(gamestate, 0, column2)
+            return MoveHelper.check_condition_2_and_3(gamestate, 0, column2)
         elif should_check_condition_3:
-            return MoveChecker.check_condition_2_and_3(gamestate, column1, column2)
+            return MoveHelper.check_condition_2_and_3(gamestate, column1, column2)
         else:
             return False
 
