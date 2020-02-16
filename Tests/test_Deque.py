@@ -31,8 +31,7 @@ class TestDeque(TestCase):
     def test_remove_front_without_items_in_deque(self):
         deque = Deque()
 
-        with self.assertRaises(IndexError):
-            deque.remove_front()
+        self.assertRaises(IndexError, deque.remove_front)
 
     def test_remove_rear_with_items_in_deque(self):
         deque = Deque()
@@ -50,8 +49,7 @@ class TestDeque(TestCase):
     def test_remove_rear_without_items_in_deque(self):
         deque = Deque()
 
-        with self.assertRaises(IndexError):
-            deque.remove_rear()
+        self.assertRaises(IndexError, deque.remove_rear)
 
     def test_peek_front_with_items_in_deque(self):
         deque = Deque()
@@ -69,8 +67,7 @@ class TestDeque(TestCase):
     def test_peek_front_without_items_in_deque(self):
         deque = Deque()
 
-        with self.assertRaises(IndexError):
-            deque.peek_front()
+        self.assertRaises(IndexError, deque.peek_front)
 
     def test_peek_rear(self):
         deque = Deque()
@@ -88,5 +85,4 @@ class TestDeque(TestCase):
     def test_peek_rear_without_items_in_deque(self):
         deque = Deque()
 
-        with self.assertRaises(IndexError):
-            deque.peek_rear()
+        self.assertRaises(IndexError, deque.peek_rear)

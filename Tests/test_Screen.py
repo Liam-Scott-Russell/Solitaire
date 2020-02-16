@@ -20,8 +20,7 @@ class TestScreen(unittest.TestCase):
         """
         test_screen = Screen(2, 2)
 
-        with self.assertRaises(IndexError):
-            test_screen.get_point(-1, 23)
+        self.assertRaises(IndexError, test_screen.get_point, -1, 23)
 
     def test_set_point_with_valid_coordinates(self):
         """
@@ -41,8 +40,7 @@ class TestScreen(unittest.TestCase):
         """
         test_screen = Screen(2, 2)
 
-        with self.assertRaises(IndexError):
-            test_screen.set_point(1, 2, "#")
+        self.assertRaises(IndexError, test_screen.set_point, 1, 2, "#")
 
         self.assertEqual(test_screen.get_matrix(), Screen(2, 2).get_matrix())
 
@@ -72,15 +70,6 @@ class TestScreen(unittest.TestCase):
 
         self.assertListEqual(expected_matrix, actual_matrix)
 
-    def test_point_is_valid_with_valid_coordinates(self):
-        """
-        Test that the screen can validate correct points
-        """
-        test_screen = Screen(2, 2)
-
-        for row in range(2):
-            for col in range(2):
-                self.assertTrue(test_screen.point_is_valid(row, col))
     def test_point_is_valid_with_valid_coordinates(self):
         """
         Test that the screen can invalidate incorrect points

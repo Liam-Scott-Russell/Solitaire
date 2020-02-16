@@ -87,6 +87,6 @@ class TestMoveHelper(TestCase):
         test_move1 = "I'm and invalid move"
         test_move2 = "a,b"
 
-        with self.assertRaises(ValueError):
-            MoveHelper.format_move(test_move1)
-            MoveHelper.format_move(test_move2)
+        self.assertRaises(ValueError, MoveHelper.format_move, test_move1)
+        self.assertRaises(ValueError, MoveHelper.format_move, test_move2)
+

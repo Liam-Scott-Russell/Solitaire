@@ -25,8 +25,7 @@ class TestScreenHelper(TestCase):
         """
         screen = Screen(2, 2)
 
-        with self.assertRaises(IndexError):
-            ScreenHelper.draw_line(screen, 0, 0, 3, 0, "#")
+        self.assertRaises(IndexError, ScreenHelper.draw_line, screen, 0, 0, 3, 0, "#")
 
         self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())
 
@@ -50,8 +49,7 @@ class TestScreenHelper(TestCase):
         """
         screen = Screen(2, 2)
 
-        with self.assertRaises(IndexError):
-            ScreenHelper.draw_line(screen, 0, 0, 0, 3, "#")
+        self.assertRaises(IndexError, ScreenHelper.draw_line, screen, 0, 0, 0, 3, "#")
 
         self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())
 
@@ -75,8 +73,7 @@ class TestScreenHelper(TestCase):
         """
         screen = Screen(2, 2)
 
-        with self.assertRaises(IndexError):
-            ScreenHelper.draw_line(screen, 0, 0, 0, 3, "#")
+        self.assertRaises(IndexError, ScreenHelper.draw_line,screen, 0, 0, 0, 3, "#")
 
         self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())
 
@@ -115,8 +112,7 @@ class TestScreenHelper(TestCase):
         screen = Screen(4, 4)
         card = Card(3)
 
-        with self.assertRaises(IndexError):
-            ScreenHelper.draw_card(screen, 0, 0, card)
+        self.assertRaises(IndexError, ScreenHelper.draw_card, screen, 0, 0, card)
 
         self.assertListEqual(Screen(4, 4).get_matrix(), screen.get_matrix())
 

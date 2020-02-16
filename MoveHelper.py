@@ -45,7 +45,7 @@ class MoveHelper:
             split_move = move_without_whitespace.split(",")
             column1 = int(split_move[0])
             column2 = int(split_move[1])
-        except IndexError or ValueError:
-            return ValueError("Move not in the correct format")
+        except ValueError or IndexError:
+            raise(ValueError("Invalid Move"))
         else:
             return column1, column2
