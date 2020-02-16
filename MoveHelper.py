@@ -37,3 +37,15 @@ class MoveHelper:
 
         else:
             return is_items_in_first_column
+
+    @staticmethod
+    def format_move(possible_move):
+        move_without_whitespace = possible_move.replace(" ", "")
+        try:
+            split_move = move_without_whitespace.split(",")
+            column1 = int(split_move[0])
+            column2 = int(split_move[1])
+        except IndexError or ValueError:
+            return ValueError("Move not in the correct format")
+        else:
+            return column1, column2

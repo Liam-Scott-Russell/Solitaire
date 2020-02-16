@@ -75,4 +75,18 @@ class TestMoveHelper(TestCase):
 
         self.assertFalse(MoveHelper.check_move(1, 0, game))
 
-    
+    def test_format_move_with_valid_string(self):
+        test_move = "0,1"
+
+        actual_move = MoveHelper.format_move(test_move)
+        expected_move = (0, 1)
+
+        self.assertEqual(expected_move, actual_move)
+
+    def test_format_move_with_invalid_string(self):
+        test_move1 = "I'm and invalid move"
+        test_move2 = "a,b"
+
+        with self.assertRaises(ValueError):
+            MoveHelper.format_move(test_move1)
+            MoveHelper.format_move(test_move2)
