@@ -12,5 +12,5 @@ class GameState:
 
     def setup_random_deck(self):
         deck = [i for i in range(self.number_of_cards)]
-        shuffled_deck = random.shuffle(deck)
-        self.columns[0].items = shuffled_deck
+        random.shuffle(deck)
+        self.columns[0].items = deck

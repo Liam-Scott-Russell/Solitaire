@@ -32,7 +32,7 @@ class TestMoveHelper(TestCase):
 
     def test_check_move_with_condition_2_and_no_items_in_destination(self):
         game = GameState(2)
-        game.columns[0].items = [Card(1), Card(2)]
+        game.setup_random_deck()
 
         self.assertTrue(MoveHelper.check_move(0, 1, game))
 
