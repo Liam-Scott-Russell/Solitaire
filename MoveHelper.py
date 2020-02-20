@@ -7,21 +7,21 @@ class MoveHelper:
         should_check_condition_3 = column1 > 0 and column2 > 0
 
         if should_check_condition_1:
-            return MoveHelper.check_condition_1(gamestate)
+            return MoveHelper.__check_condition_1(gamestate)
         elif should_check_condition_2:
-            return MoveHelper.check_condition_2_and_3(gamestate, 0, column2)
+            return MoveHelper.__check_condition_2_and_3(gamestate, 0, column2)
         elif should_check_condition_3:
-            return MoveHelper.check_condition_2_and_3(gamestate, column1, column2)
+            return MoveHelper.__check_condition_2_and_3(gamestate, column1, column2)
         else:
             return False
 
     @staticmethod
-    def check_condition_1(gamestate):
+    def __check_condition_1(gamestate):
         is_items_in_first_column = gamestate.columns[0].size() != 0
         return is_items_in_first_column
 
     @staticmethod
-    def check_condition_2_and_3(gamestate, column1, column2):
+    def __check_condition_2_and_3(gamestate, column1, column2):
         first_card_deque = gamestate.columns[column1]
         second_card_deque = gamestate.columns[column2]
 
