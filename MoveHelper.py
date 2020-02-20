@@ -2,15 +2,13 @@ class MoveHelper:
     @staticmethod
     def check_move(column1, column2, gamestate):
 
-        should_check_condition_1 = column1 == 0 and column2 == 0
-        should_check_condition_2 = column1 == 0 and column2 > 0
-        should_check_condition_3 = column1 > 0 and column2 > 0
+        move_condition_to_check = MoveHelper.determine_move_condition(column1, column2)
 
-        if should_check_condition_1:
+        if move_condition_to_check == 1:
             return MoveHelper.__check_condition_1(gamestate)
-        elif should_check_condition_2:
+        elif move_condition_to_check == 2:
             return MoveHelper.__check_condition_2_and_3(gamestate, 0, column2)
-        elif should_check_condition_3:
+        elif move_condition_to_check == 3:
             return MoveHelper.__check_condition_2_and_3(gamestate, column1, column2)
         else:
             return False
@@ -49,3 +47,18 @@ class MoveHelper:
             raise(ValueError("Invalid Move"))
         else:
             return column1, column2
+
+    @staticmethod
+    def determine_move_condition(column1, column2):
+        is_condition_1 = column1 == 0 and column2 == 0
+        is_condition_2 = column1 == 0 and column2 > 0
+        is_condition_3 = column1 > 0 and column2 > 0
+
+        if is_condition_1:
+            return 1
+        elif is_condition_2:
+            return 2
+        elif is_condition_3:
+            return 3
+        else:
+            return None
