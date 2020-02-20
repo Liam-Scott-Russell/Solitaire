@@ -1,7 +1,7 @@
 from unittest import TestCase
 from MoveHelper import MoveHelper
-from GameState import GameState
-from Card import Card
+from DTOs.GameState import GameState
+from DTOs.Card import Card
 
 
 class TestMoveHelper(TestCase):

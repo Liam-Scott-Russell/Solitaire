@@ -1,6 +1,6 @@
 from unittest import TestCase
 from WinChecker import WinChecker
-from GameState import GameState
+from DTOs.GameState import GameState
 
 class TestWinChecker(TestCase):
     def test_check_if_won_with_cards_in_first_column(self):

@@ -1,7 +1,7 @@
 from unittest import TestCase
 from ScreenHelper import ScreenHelper
-from Screen import Screen
-from Card import Card
+from DTOs.Screen import Screen
+from DTOs.Card import Card
 
 
 class TestScreenHelper(TestCase):

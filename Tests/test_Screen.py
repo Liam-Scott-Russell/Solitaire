@@ -1,5 +1,5 @@
 import unittest
-from Screen import Screen
+from DTOs.Screen import Screen
 
 
 class TestScreen(unittest.TestCase):

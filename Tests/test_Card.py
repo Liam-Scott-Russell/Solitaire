@@ -1,5 +1,5 @@
 from unittest import TestCase
-from Card import Card
+from DTOs.Card import Card
 
 class TestCard(TestCase):
     def test_get_representation_with_single_digit_and_number_shown(self):
