@@ -16,13 +16,13 @@ class MoveHelper:
 
     @staticmethod
     def __check_condition_1(gamestate):
-        is_items_in_first_column = gamestate.columns[0].size() != 0
+        is_items_in_first_column = gamestate.columns[0].cards.size() != 0
         return is_items_in_first_column
 
     @staticmethod
     def __check_condition_2_and_3(gamestate, move):
-        first_card_deque = gamestate.columns[move.source_column]
-        second_card_deque = gamestate.columns[move.destination_column]
+        first_card_deque = gamestate.columns[move.source_column].cards
+        second_card_deque = gamestate.columns[move.destination_column].cards
 
         is_items_in_first_column = first_card_deque.size() != 0
         is_items_in_second_column = second_card_deque.size() != 0
