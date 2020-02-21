@@ -19,21 +19,24 @@ class MoveHelper:
 
     @staticmethod
     def __check_condition_2_and_3(gamestate, move):
-        first_card_deque = gamestate.columns[move.source_column].cards
-        second_card_deque = gamestate.columns[move.destination_column].cards
+        source_card_deque = gamestate.columns[move.source_column].cards
+        destination_card_deque = gamestate.columns[move.destination_column].cards
 
-        is_items_in_first_column = first_card_deque.size() != 0
-        is_items_in_second_column = second_card_deque.size() != 0
+        is_items_in_source_column = source_card_deque.size() != 0
+        is_items_in_destination_column = destination_card_deque.size() != 0
 
-        if is_items_in_first_column and is_items_in_second_column and move.destination_column != 0:
-            first_card_in_second_column = second_card_deque.peek_front()
-            first_card_in_first_column = first_card_deque.peek_front()
+        if is_items_in_source_column and is_items_in_destination_column and move.destination_column != 0:
+            first_card_in_destination_column = destination_card_deque.peek_front()
+            if MoveHelper.determine_move_condition(move) == 2:
+                first_card_in_source_column = source_card_deque.peek_front()
+            else:
+                first_card_in_source_column = source_card_deque.peek_rear()
 
-            first_card_is_one_less_than_second = first_card_in_first_column.number == first_card_in_second_column.number - 1
+            first_card_is_one_less_than_second = first_card_in_source_column.number == first_card_in_destination_column.number - 1
             return first_card_is_one_less_than_second
 
         else:
-            return is_items_in_first_column
+            return is_items_in_source_column
 
     @staticmethod
     def format_move(possible_move):
