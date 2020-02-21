@@ -1,4 +1,5 @@
 from .Column import Column
+from .Card import Card
 import random
 
 
@@ -11,6 +12,6 @@ class GameState:
         self.columns = [Column() for i in range(self.number_of_cols)]
 
     def setup_random_deck(self):
-        deck = [i for i in range(self.number_of_cards)]
+        deck = [Card(i) for i in range(self.number_of_cards)]
         random.shuffle(deck)
         self.columns[0].cards.items = deck
