@@ -11,13 +11,13 @@ class TestMoveHelper(TestCase):
         game.columns[0].cards.items = [Card(1), Card(2)]
         move = Move(0, 0)
 
-        self.assertTrue(MoveHelper.check_move(move, game))
+        self.assertTrue(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_1_and_no_items_in_deque(self):
         game = GameState(2)
         move = Move(0, 0)
 
-        self.assertFalse(MoveHelper.check_move(move, game))
+        self.assertFalse(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_2_and_valid_items_in_destination(self):
         game = GameState(4)
@@ -25,7 +25,7 @@ class TestMoveHelper(TestCase):
         game.columns[1].cards.items = [Card(4), Card(3)]
         move = Move(0, 1)
 
-        self.assertTrue(MoveHelper.check_move(move, game))
+        self.assertTrue(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_2_and_invalid_items_in_destination(self):
         game = GameState(4)
@@ -33,20 +33,20 @@ class TestMoveHelper(TestCase):
         game.columns[1].cards.items = [Card(5), Card(4)]
         move = Move(0, 1)
 
-        self.assertFalse(MoveHelper.check_move(move, game))
+        self.assertFalse(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_2_and_no_items_in_destination(self):
         game = GameState(2)
         game.setup_random_deck()
         move = Move(0, 1)
 
-        self.assertTrue(MoveHelper.check_move(move, game))
+        self.assertTrue(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_2_and_no_items_in_destination_and_no_items_in_source(self):
         game = GameState(2)
         move = Move(0, 1)
 
-        self.assertFalse(MoveHelper.check_move(move, game))
+        self.assertFalse(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_3_and_valid_items_in_destination(self):
         game = GameState(14) # large so that we generate the correct number of columns
@@ -54,8 +54,8 @@ class TestMoveHelper(TestCase):
         game.columns[2].cards.items = [Card(4), Card(3)]
         game.columns[3].cards.items = [Card(1), Card(2)]
 
-        self.assertTrue(MoveHelper.check_move(Move(1, 2), game))
-        self.assertTrue(MoveHelper.check_move(Move(3, 2), game))
+        self.assertTrue(MoveHelper.check_move(game, Move(1, 2)))
+        self.assertTrue(MoveHelper.check_move(game, Move(3, 2)))
 
     def test_check_move_with_condition_3_and_invalid_items_in_destination(self):
         game = GameState(4)
@@ -63,20 +63,20 @@ class TestMoveHelper(TestCase):
         game.columns[2].cards.items = [Card(3), Card(3)]
         move = Move(2, 1)
 
-        self.assertFalse(MoveHelper.check_move(move, game))
+        self.assertFalse(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_3_and_no_items_in_destination(self):
         game = GameState(2)
         game.columns[1].cards.items = [Card(1), Card(2)]
         move = Move(1, 2)
 
-        self.assertTrue(MoveHelper.check_move(move, game))
+        self.assertTrue(MoveHelper.check_move(game, move))
 
     def test_check_move_with_condition_3_and_no_items_in_destination_and_no_items_in_source(self):
         game = GameState(2)
         move = Move(2, 1)
 
-        self.assertFalse(MoveHelper.check_move(move, game))
+        self.assertFalse(MoveHelper.check_move(game, move))
 
     def test_check_move_with_empty_column_0(self):
         # TODO: Consider whether this should be implemented
@@ -84,7 +84,7 @@ class TestMoveHelper(TestCase):
         game.columns[1].cards.items = [1]
         move = Move(1, 0)
 
-        self.assertRaises(ValueError, MoveHelper.check_move, move, game)
+        self.assertRaises(ValueError, MoveHelper.check_move, game, move)
 
     def test_format_move_with_valid_string(self):
         test_move = "0,1"

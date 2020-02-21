@@ -3,7 +3,7 @@ from DTOs.Move import Move
 
 class MoveHelper:
     @staticmethod
-    def check_move(move, gamestate):
+    def check_move(gamestate, move):
 
         move_condition_to_check = MoveHelper.determine_move_condition(move)
 
@@ -63,3 +63,7 @@ class MoveHelper:
             return 3
         else:
             raise ValueError("Cannot determine move condition")
+
+    @staticmethod
+    def make_move(gamestate, move):
+        pass
