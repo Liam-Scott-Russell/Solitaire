@@ -66,4 +66,18 @@ class MoveHelper:
 
     @staticmethod
     def make_move(gamestate, move):
-        pass
+        move_condition = MoveHelper.determine_move_condition(move)
+
+        if move_condition == 1:
+            card_to_move = gamestate.columns[move.source_column].cards.remove_front()
+            gamestate.columns[move.destination_column].cards.add_rear(card_to_move)
+
+        elif move_condition == 2:
+            card_to_move = gamestate.columns[move.source_column].cards.remove_front()
+            gamestate.columns[move.destination_column].cards.add_front(card_to_move)
+
+        elif move_condition == 3:
+            cards_to_move = gamestate.columns[move.source_column].cards.items
+            for card in cards_to_move:
+                gamestate.columns[move.destination_column].cards.add_front(card)
+            gamestate.columns[move.source_column].cards.items = []
