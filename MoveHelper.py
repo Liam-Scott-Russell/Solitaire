@@ -11,8 +11,6 @@ class MoveHelper:
             return MoveHelper.__check_condition_1(gamestate)
         elif move_condition_to_check == 2 or move_condition_to_check == 3:
             return MoveHelper.__check_condition_2_and_3(gamestate, move)
-        else:
-            return False
 
     @staticmethod
     def __check_condition_1(gamestate):
