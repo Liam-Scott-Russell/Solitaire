@@ -18,9 +18,9 @@ class Deque:
         if self.size() == 0:
             raise IndexError("No items in Deque")
         else:
-            temp = self.items[0]
+            current_rear_item = self.items[0]
             self.items = self.items[1:]
-            return temp
+            return current_rear_item
 
     def size(self):
         return len(self.items)
