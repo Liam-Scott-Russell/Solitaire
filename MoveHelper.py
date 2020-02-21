@@ -66,18 +66,28 @@ class MoveHelper:
 
     @staticmethod
     def make_move(gamestate, move):
+        cards_to_move = MoveHelper.__get_cards_to_move(gamestate, move)
+        MoveHelper.__move_cards(gamestate, move, cards_to_move)
+
+    @staticmethod
+    def __get_cards_to_move(gamestate, move):
+        move_condition = MoveHelper.determine_move_condition(move)
+        cards_to_move = []
+
+        if move_condition == 1 or move_condition == 2:
+            cards_to_move.append(gamestate.columns[move.source_column].cards.remove_front())
+        elif move_condition == 3:
+            cards_to_move = gamestate.columns[move.source_column].cards.items
+            gamestate.columns[move.source_column].cards.items = []
+
+        return cards_to_move
+
+    @staticmethod
+    def __move_cards(gamestate, move, cards_to_move):
         move_condition = MoveHelper.determine_move_condition(move)
 
         if move_condition == 1:
-            card_to_move = gamestate.columns[move.source_column].cards.remove_front()
-            gamestate.columns[move.destination_column].cards.add_rear(card_to_move)
-
-        elif move_condition == 2:
-            card_to_move = gamestate.columns[move.source_column].cards.remove_front()
-            gamestate.columns[move.destination_column].cards.add_front(card_to_move)
-
-        elif move_condition == 3:
-            cards_to_move = gamestate.columns[move.source_column].cards.items
+            gamestate.columns[move.destination_column].cards.add_rear(cards_to_move[0])
+        elif move_condition == 2 or move_condition == 3:
             for card in cards_to_move:
                 gamestate.columns[move.destination_column].cards.add_front(card)
-            gamestate.columns[move.source_column].cards.items = []

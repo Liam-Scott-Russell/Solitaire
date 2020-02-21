@@ -191,7 +191,7 @@ class TestMoveHelperMakeMove(TestCase):
         self.assertListEqual(expected_column_1, actual_column_1)
 
     def test_make_move_with_single_valid_condition_3_and_cards_in_destination(self):
-        game = GameState(4)
+        game = GameState(2)
         game.columns[1].cards.items = [1]
         game.columns[2].cards.items = [2]
         move = Move(1, 2)
@@ -207,7 +207,7 @@ class TestMoveHelperMakeMove(TestCase):
         self.assertListEqual(expected_column_2, actual_column_2)
 
     def test_make_move_with_multiple_valid_condition_3_and_no_cards_in_destination(self):
-        game = GameState(4)
+        game = GameState(3)
         game.columns[1].cards.items = [3, 2, 1]
         game.columns[2].cards.items = []
         move = Move(1, 2)
