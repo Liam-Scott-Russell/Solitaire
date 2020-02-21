@@ -62,4 +62,4 @@ class MoveHelper:
         elif is_condition_3:
             return 3
         else:
-            return None
+            raise ValueError("Cannot determine move condition")

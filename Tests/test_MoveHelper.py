@@ -84,7 +84,7 @@ class TestMoveHelper(TestCase):
         game.columns[1].cards.items = [1]
         move = Move(1, 0)
 
-        self.assertFalse(MoveHelper.check_move(move, game))
+        self.assertRaises(ValueError, MoveHelper.check_move, move, game)
 
     def test_format_move_with_valid_string(self):
         test_move = "0,1"
@@ -102,3 +102,27 @@ class TestMoveHelper(TestCase):
         self.assertRaises(ValueError, MoveHelper.format_move, test_move1)
         self.assertRaises(ValueError, MoveHelper.format_move, test_move2)
 
+    def test_determine_move_condition_with_condition_1(self):
+        move = Move(0, 0)
+        actual_condition = MoveHelper.determine_move_condition(move)
+        expected_condition = 1
+
+        self.assertEqual(expected_condition, actual_condition)
+
+    def test_determine_move_condition_with_condition_2(self):
+        move = Move(0, 1)
+        actual_condition = MoveHelper.determine_move_condition(move)
+        expected_condition = 2
+
+        self.assertEqual(expected_condition, actual_condition)
+
+    def test_determine_move_condition_with_condition_3(self):
+        move = Move(1, 2)
+        actual_condition = MoveHelper.determine_move_condition(move)
+        expected_condition = 3
+
+        self.assertEqual(expected_condition, actual_condition)
+
+    def test_determine_move_condition_with_invalid_move(self):
+        move = Move(-1, 0)
+        self.assertRaises(ValueError, MoveHelper.determine_move_condition, move)
