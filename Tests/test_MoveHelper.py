@@ -50,9 +50,9 @@ class TestMoveHelperCheckMove(TestCase):
 
     def test_check_move_with_condition_3_and_valid_items_in_destination(self):
         game = GameState(14)  # large so that we generate the correct number of columns
-        game.columns[1].cards.items = [Card(1), Card(2)]
+        game.columns[1].cards.items = [Card(2), Card(1)]
         game.columns[2].cards.items = [Card(4), Card(3)]
-        game.columns[3].cards.items = [Card(1), Card(2)]
+        game.columns[3].cards.items = [Card(2), Card(1)]
 
         self.assertTrue(MoveHelper.check_move(game, Move(1, 2)))
         self.assertTrue(MoveHelper.check_move(game, Move(3, 2)))

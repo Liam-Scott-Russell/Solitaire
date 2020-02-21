@@ -15,3 +15,6 @@ class Card:
         character_to_show = str(self.number) if show_number else "*"
         representation = " ____\n|  {:>2}|\n|    |\n|    |\n|____|".format(character_to_show)
         return representation
+
+    def __str__(self):
+        return f"Card({self.number})"
