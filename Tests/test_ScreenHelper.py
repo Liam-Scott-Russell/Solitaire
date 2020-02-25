@@ -141,6 +141,7 @@ class TestScreenHelperCardWillFitOnScreen(TestCase):
 
 
 class TestScreenHelperDrawColumn(TestCase):
+    # TODO: Add tests for invalid x and y coordinates
     def test_draw_column_with_empty_column(self):
         screen = Screen(10, 10)
         column = Column()
