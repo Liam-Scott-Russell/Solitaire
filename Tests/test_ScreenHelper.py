@@ -2,6 +2,7 @@ from unittest import TestCase
 from ScreenHelper import ScreenHelper
 from DTOs.Screen import Screen
 from DTOs.Card import Card
+from DTOs.Column import Column
 
 
 class TestScreenHelperDrawLine(TestCase):
@@ -137,3 +138,38 @@ class TestScreenHelperCardWillFitOnScreen(TestCase):
         card = Card(3)
 
         self.assertFalse(ScreenHelper.card_will_fit_on_screen(screen, 0, 1, card))
+
+
+class TestScreenHelperDrawColumn(TestCase):
+    def test_draw_column_with_empty_column(self):
+        screen = Screen(10, 10)
+        column = Column()
+        column.cards.items = []
+        ScreenHelper.draw_column(screen, 0, 0, column)
+
+        expected_screen = Screen(10, 10)
+
+        self.assertListEqual(expected_screen.get_matrix(), screen.get_matrix())
+
+    def test_draw_column_with_one_card_and_valid_coordinate(self):
+        screen = Screen(10, 10)
+        column = Column()
+        column.cards.items = [Card(5)]
+        ScreenHelper.draw_column(screen, 0, 0, column)
+
+        expected_screen = Screen(10, 10)
+        ScreenHelper.draw_card(expected_screen, 0, 0, Card(5))
+
+        self.assertListEqual(expected_screen.get_matrix(), screen.get_matrix())
+
+    def test_draw_column_with_multiple_cards_and_valid_coordinates(self):
+        screen = Screen(10, 10)
+        column = Column()
+        column.cards.items = [Card(5), Card(4)]
+        ScreenHelper.draw_column(screen, 1, 0, column)
+
+        expected_screen = Screen(10, 10)
+        ScreenHelper.draw_card(expected_screen, 1, 0, Card(5))
+        ScreenHelper.draw_card(expected_screen, 1, 2, Card(4))
+
+        self.assertListEqual(expected_screen.get_matrix(), screen.get_matrix())

@@ -42,3 +42,15 @@ class ScreenHelper:
         will_fit_on_y_axis = card_max_y_value <= screen_max_y_value
 
         return will_fit_on_x_axis and will_fit_on_y_axis and screen.point_is_valid(x, y)
+
+    @staticmethod
+    def draw_column(screen, x, y, column):
+        CARD_VERTICAL_SPACING = 2
+
+        current_x = x
+        current_y = y
+
+        for card in column.cards.items:
+            ScreenHelper.draw_card(screen, current_x, current_y, card)
+
+            current_y += CARD_VERTICAL_SPACING
