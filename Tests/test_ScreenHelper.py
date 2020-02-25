@@ -4,7 +4,7 @@ from DTOs.Screen import Screen
 from DTOs.Card import Card
 
 
-class TestScreenHelper(TestCase):
+class TestScreenHelperDrawLine(TestCase):
     def test_draw_line_horizontally_with_valid_coordinates(self):
         """
         A test that a horizontal line can be drawn
@@ -73,10 +73,12 @@ class TestScreenHelper(TestCase):
         """
         screen = Screen(2, 2)
 
-        self.assertRaises(IndexError, ScreenHelper.draw_line,screen, 0, 0, 0, 3, "#")
+        self.assertRaises(IndexError, ScreenHelper.draw_line, screen, 0, 0, 0, 3, "#")
 
         self.assertListEqual(screen.get_matrix(), Screen(2, 2).get_matrix())
 
+
+class TestScreenHelperDrawCard(TestCase):
     def test_draw_card_with_valid_coordinates(self):
         screen = Screen(6, 5)
         card = Card(2)
@@ -116,6 +118,8 @@ class TestScreenHelper(TestCase):
 
         self.assertListEqual(Screen(4, 4).get_matrix(), screen.get_matrix())
 
+
+class TestScreenHelperCardWillFitOnScreen(TestCase):
     def test_card_will_fit_on_screen_with_valid_coordinates(self):
         screen = Screen(6, 5)
         card = Card(3)
