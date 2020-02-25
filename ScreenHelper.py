@@ -54,3 +54,14 @@ class ScreenHelper:
             ScreenHelper.draw_card(screen, current_x, current_y, card)
 
             current_y += CARD_VERTICAL_SPACING
+
+    @staticmethod
+    def draw_game(screen, game):
+        COLUMN_HORIZONTAL_SPACE = 10
+
+        current_x = 0
+        current_y = 0
+
+        for column in game.columns:
+            ScreenHelper.draw_column(screen, current_x, current_y, column)
+            current_x += COLUMN_HORIZONTAL_SPACE
